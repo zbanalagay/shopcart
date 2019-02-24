@@ -39,7 +39,6 @@ button {
 }
 
 .tile img {
-    border: 1px solid rgba(18,52,102,0.15);
     width: 100px;
     height: 100px;
 }

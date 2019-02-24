@@ -9,6 +9,10 @@ button {
   cursor: pointer;
 }
 
+img{
+  border: 1px solid rgba(18,52,102,0.15);
+}
+
 
 button:hover {
   background-color:#015249;
@@ -16,6 +20,10 @@ button:hover {
 
 .App {
   text-align: center;
+}
+
+.overview {
+  display:flex;
 }
 
 .container {
