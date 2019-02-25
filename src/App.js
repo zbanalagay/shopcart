@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+import payload from './api_payload';
 import RecommendedList from './recommended/RecommendedList';
 import ShoppingCart from './shopping-cart/ShoppingCart';
+
 
 class App extends Component {
   constructor(props){
@@ -38,15 +40,19 @@ class App extends Component {
   }
 
   render() {
+    const {product_list, first_name, last_name} = payload
     return (
       <div className="App">
-        hello world
+        <header>
+            <h1>ShopCart</h1>
+        </header>
+        <div className="greeting-bar">
+            <h3>Hello {first_name} {last_name}! </h3>
+          </div>
         <div className="overview">
           <ShoppingCart items={this.state.shoppingCartItems} totalPrice={this.state.totalPrice} onQuantityChange={this.onQuantityChange} onRemoveItemFromCart={this.onRemoveItemFromCart}/>
-          <RecommendedList onAddToCart={this.onAddToCart}/>
+          <RecommendedList onAddToCart={this.onAddToCart} productList={product_list}/>
         </div>
-       
-        
       </div>
     );
   }
