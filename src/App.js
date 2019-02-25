@@ -19,7 +19,7 @@ class App extends Component {
     this.setState({shoppingCartItems, totalPrice: this.state.totalPrice + (shoppingItemPrice * shoppingItem.quantity)})
   }
 
-  onQuantityChange = (quantity, id, price) => {
+  onQuantityChange = (quantity, id) => {
     const item = this.state.shoppingCartItems[id];
     if (item.quantity !== quantity){
       const itemPrice = Number(item.price.replace(/[^0-9\.]+/g,""));
@@ -27,7 +27,14 @@ class App extends Component {
       item.quantity = quantity;
       this.setState({totalPrice: newTotalPrice})
     }
-    
+  }
+
+  onRemoveItemFromCart = (id) => {
+    const items = this.state.shoppingCartItems
+    const [removedItem]= items.splice(id, 1)
+    const itemPrice = Number(removedItem.price.replace(/[^0-9\.]+/g,""));
+    const newTotalPrice = this.state.totalPrice - (itemPrice * removedItem.quantity);
+    this.setState({shoppingCartItems:items, totalPrice: newTotalPrice})
   }
 
   render() {
@@ -35,7 +42,7 @@ class App extends Component {
       <div className="App">
         hello world
         <div className="overview">
-          <ShoppingCart items={this.state.shoppingCartItems} totalPrice={this.state.totalPrice} onQuantityChange={this.onQuantityChange}/>
+          <ShoppingCart items={this.state.shoppingCartItems} totalPrice={this.state.totalPrice} onQuantityChange={this.onQuantityChange} onRemoveItemFromCart={this.onRemoveItemFromCart}/>
           <RecommendedList onAddToCart={this.onAddToCart}/>
         </div>
        

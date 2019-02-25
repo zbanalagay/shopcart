@@ -9,14 +9,29 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color:#015249;
+}
+
 img{
   border: 1px solid rgba(18,52,102,0.15);
 }
 
-
-button:hover {
-  background-color:#015249;
+a {
+  color: #015249;
+  cursor: pointer;
+  text-decoration: none;
 }
+
+a:hover {
+  color:#57BC90;
+  
+}
+
+a:focus {
+  color:#015249;
+}
+
 
 .App {
   text-align: center;
@@ -43,3 +58,7 @@ button:hover {
   border-top: 1px solid rgba(18,52,102,0.15);
 }
 
+.container-body {
+  min-width: 480px;
+  min-height: 400px;
+}

@@ -15,8 +15,13 @@ class ListItem extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.onQuantityChange(this.state.quantityValue, this.props.id, this.props.price)
+        this.props.onQuantityChange(this.state.quantityValue, this.props.id)
     }
+
+    removeItem = () => {
+        this.props.onRemoveItemFromCart(this.props.id);
+    }
+
 
     render(){
         const {image, name, price, quantity} = this.props;
@@ -27,14 +32,14 @@ class ListItem extends Component {
                 <h5>{name}</h5>
                 <p>{price}</p>
             </div> 
-            <div>
+            <div class="cart-user-input">
                 <form onSubmit={this.handleSubmit}>
                 <label>Quantity
                     <input type="number" min={1} max={100} value={this.state.quantityValue} onChange={this.onChange}/>
                 </label>
                 <button> Update </button>
                 </form>
-                
+                <a onClick={this.removeItem}>Remove Item</a>
             </div>
         </div>
         )

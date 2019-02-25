@@ -5,7 +5,7 @@ import ItemTile from './components/ItemTile';
 import payload from '../api_payload';
 
 class RecommendedList extends Component {
-    // TODO empty list
+
     render(){
         const {product_list} = payload;
         return(
@@ -13,11 +13,10 @@ class RecommendedList extends Component {
                 <div className="container-header">
                     <h4>Items you might like</h4>
                 </div>
-                
-                <div className="recommend-items">
-                    {product_list.map((item, index) => (
+                <div className="container-body">
+                {product_list.length > 0 ? (<div className="recommend-items">{product_list.map((item, index) => (
                         <ItemTile key={index} name={item.name} price={item.price} image={item.image} onAddToCart={this.props.onAddToCart}/>
-                        ))}
+                        ))}</div>): (<div><p>You have no recommend items.</p> </div>)}
                 </div>
             </div>
         )
