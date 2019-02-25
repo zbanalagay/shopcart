@@ -5,17 +5,22 @@ import payload from '../api_payload';
 import ListItem from './components/ListItem';
 
 class ShoppingCart extends Component {
+
     render(){
-        const {product_list} = payload;
+        const {items, totalPrice, onQuantityChange} = this.props;
+
         return(
-        <div className="container">
+            <div className="container">
             <div className="container-header">
                 <h4>Shopping Cart</h4>
             </div>
             <div>
-                {product_list.map((item, index) => (
-                    <ListItem name={item.name} price={item.price} image={item.image} />
+                {items.map((item, index) => (
+                    <ListItem name={item.name} price={item.price} image={item.image} quantity={item.quantity} onQuantityChange={onQuantityChange} id={index}/>
                 ))}
+            </div>
+            <div className="container-footer">
+                <h6>Total:</h6> <p>{totalPrice}</p>
             </div>
         </div>);
     }
