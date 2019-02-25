@@ -7,12 +7,12 @@ import convertPriceStringToNumber from './utils/convertPriceStringToNumber'
 
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       shoppingCartItems: [],
       totalPrice: 0.00,
-      recommendedList: payload.product_list.sort((a, b) => b.match - a.match)
+      recommendedList: [...payload.product_list.sort((a, b) => b.match - a.match)]
     };
   }
 
@@ -27,7 +27,7 @@ class App extends Component {
     
     recommendedList[item.id].disabled = true;
     
-    this.setState({shoppingCartItems, totalPrice, recommendedList});
+    this.setState({ shoppingCartItems, totalPrice, recommendedList });
   }
 
   onQuantityChange = (quantity, id) => {
@@ -35,29 +35,29 @@ class App extends Component {
     const item = shoppingCartItems[id];
     if (item.quantity !== quantity) {
       const itemPrice = convertPriceStringToNumber(item.price);
-      const newTotalPrice = this.state.totalPrice - (itemPrice * item.quantity) + (itemPrice * quantity);
+      const newTotalPrice = this.state.totalPrice - (itemPrice * (item.quantity - quantity));
 
       item.quantity = quantity;
 
-      this.setState({totalPrice: newTotalPrice, shoppingCartItems})
+      this.setState({ shoppingCartItems, totalPrice: newTotalPrice })
     }
   }
 
   onRemoveItemFromCart = (id) => {
-    const items = this.state.shoppingCartItems;
-    const [ removedItem ]= items.splice(id, 1);
+    const { recommendedList, shoppingCartItems } = this.state;
+    const [ removedItem ]= shoppingCartItems.splice(id, 1);
     
     const itemPrice = convertPriceStringToNumber(removedItem.price);
     const newTotalPrice = this.state.totalPrice - (itemPrice * removedItem.quantity);
 
-    this.state.recommendedList[removedItem.id].disabled = false;
+    recommendedList[removedItem.id].disabled = false;
 
-    this.setState({shoppingCartItems:items, totalPrice: newTotalPrice})
+    this.setState({ shoppingCartItems, recommendedList, totalPrice: newTotalPrice })
   }
 
   render() {
     const {first_name, last_name} = payload;
-    
+
     return (
       <div className="App">
         <header>

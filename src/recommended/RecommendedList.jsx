@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './RecommendedList.css';
 
 import ItemTile from './components/ItemTile';
@@ -6,12 +6,12 @@ import ItemTile from './components/ItemTile';
 class RecommendedList extends Component {
 
     render() {
-        const {productList} = this.props;
+        const { productList } = this.props;
 
         return(
             <div className="container">
                 <div className="container-header">
-                    <h4>Items you might like</h4>
+                    <h3>Recommended Items</h3>
                 </div>
                 <div className="container-body">
                     {productList.length > 0 ? (

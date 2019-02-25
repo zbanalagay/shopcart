@@ -1,7 +1,61 @@
+
+h1, h2, h3, h4, h5, h6 {
+  color: #555;
+  margin: 0;
+}
+h1 {
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.33;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 19px;
+  line-height: 1.26;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0px;
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 400;
+  color: #555;
+}
+
 header{
   background-color:#015249;
-  color: #fff;
   padding: 16px 0;
+}
+
+header h1 {
+  color: #fff;
 }
 
 button {
@@ -24,10 +78,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-img{
-  border: 1px solid rgba(18,52,102,0.15);
-}
-
 a {
   color: #015249;
   cursor: pointer;
@@ -43,6 +93,32 @@ a:focus {
   color:#015249;
 }
 
+img{
+  border: 1px solid rgba(18,52,102,0.15);
+}
+
+
+input[type="number"] {
+  max-width:50px;
+  color: #555;
+  margin-left:4px;
+  outline: none;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+
+
+input[type="number"]:focus {
+  border: 1px solid #57BC90;
+}
+
+label {
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 600;
+  color: #555;
+}
 
 .App {
   text-align: center;
@@ -52,11 +128,12 @@ a:focus {
   display: flex;
   align-items: flex-start;
   padding: 0 32px;
-  margin: 8px 16px;
+  margin: 16px 16px;
 }
 
 .overview {
   display:flex;
+  margin-top: 0;
 }
 
 .container {
@@ -69,15 +146,54 @@ a:focus {
 
 .container-header {
   margin: 16px;
+  padding: 16px;
   border-bottom: 1px solid rgba(18,52,102,0.15);
 }
 
 .container-footer {
   margin: 16px;
   border-top: 1px solid rgba(18,52,102,0.15);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container-footer * {
+  display: inline-block;
+  margin: 8px;
 }
 
 .container-body {
   min-width: 480px;
   min-height: 400px;
+}
+
+.link-button {
+  color: #015249;
+  cursor: pointer;
+  margin: 0px;
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 500;
+  text-decoration: none;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  outline:none;
+  padding: 4px 0;
+}
+
+.link-button:hover {
+  color:#57BC90;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  outline:none;
+}
+
+.link-button:focus {
+  color: #57BC90;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  outline:none;
 }
